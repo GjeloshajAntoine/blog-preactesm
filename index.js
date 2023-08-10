@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
     }
+    @import url('https://fonts.googleapis.com/css2?family=Geologica:wght@400;900&family=Moirai+One&family=Nunito:ital,wght@0,200;0,700;0,900;1,900&family=Sen:wght@400;700;800&family=Zilla+Slab&display=swap');
 `
 
 function PageImport({src}) {

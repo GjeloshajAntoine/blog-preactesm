@@ -1,33 +1,64 @@
 import styled,{ html } from "./lib.mjs";
 import { SideBar } from "./SideBar.mjs";
+import { ArticleItem } from "./article/ArticleItem.mjs";
 
 const StyledHome = styled.div`
-    width: 45%;
+    width: 70%;
     display: inline-flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     padding: 10%;
     padding-top: 1%;
+`
 
+const StyledIntro = styled.p`
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    text-align: center;
 `
 
 const StyledArticleList = styled.div`
     display: inline-flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
 
 `
 
-export function HomePage(params) {
+const Articles = [
+    {
+        title: "Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la ",
+        tags: ["pol","tech"]
+    },
+    {
+        title: "Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la ",
+        tags: ["pol","tech"]
+    },
+    {
+        title: "Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la ",
+        tags: ["pol","tech"]
+    },
+    {
+        title: "Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la ",
+        tags: ["pol","tech"]
+    },
+    {
+        title: "Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la ",
+        tags: ["pol","tech"]
+    },
+]
+
+export function HomePage() {
     return html `
         <${StyledHome}>
-            <p>
-                Qu'est-ce que le Lorem Ipsum?
-                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-            </p>
+            <${StyledIntro}>
+                Welcome to my blog !
+                Here you'll find my interest into computing and politics
+            </${StyledIntro}>
             <${StyledArticleList}>
+                ${Articles.map(art => html`<${ArticleItem} title=${art.title} tags=${art.tags} />`)}
             <//>
         </${StyledHome}>
-            <${SideBar} />
+            <!-- <${SideBar} /> -->
     `
 }

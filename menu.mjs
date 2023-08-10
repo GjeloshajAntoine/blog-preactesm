@@ -13,10 +13,14 @@ const StyledName = styled.span`
 `
 
 const StyledLink = styled.div`
-    width: 40%;
+    width: inherit;
     display: inline-flex;
     justify-content: center;
     gap: 50px;
+    justify-content: end;
+    /* box-shadow: rgb(46 55 240 / 48%) 6px 7px, rgb(96 46 240 / 55%) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgb(240 137 46 / 10%) 20px 20px, rgb(46 240 58 / 13%) 25px 25px; */
+    border-radius: 15px;
+    margin-left: 15%;
 `
 
 const StyledLgSelector = styled.div`
@@ -29,17 +33,26 @@ const StyledLgSelector = styled.div`
 `
 
 const StyledItem = styled.a`
-    padding: 5px;
+    padding: 5px 19px;
     border-radius: 15px;
     text-decoration: none;
     font-family: Tahoma;
-    font-size: 20px;
-    background: linear-gradient(#fff, #0089ff);
+    font-size: 25px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 17px;
+    color: #916a5c;
+    color: white;
+    background: #3d00be;
+
+    /* background: linear-gradient(#fff, #0089ff);
     background: ${({textGradient}) => textGradient || null};
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
+    /* font-weight: bolder; */
+    &:hover {
+        filter: brightness(1.4);
+    }
     ${({isSelected})=> isSelected && css`
-        font-weight: bolder;
     
     `}
 `
@@ -68,12 +81,13 @@ export function Menu() {
         <${StyledLink}>
             <${LinkItem} href="/">Home<//>
             <${LinkItem} textGradient=${colors.tech.textGradient} href="/tag/tech">Tech <//>
-            <${LinkItem} href="/tag/pol">Pol <//>
+            <${LinkItem} textGradient=${colors.pol.textGradient} href="/tag/pol">Pol <//>
         <//>
         <${StyledLgSelector}>
             <${StyledItem} isSelected=true>fr<//>
             <${StyledItem}>en<//>
         <//>
+        <img width="150" src="./img/Screenshot_20220225_111536.png" />
     <//>
     `;
 }
