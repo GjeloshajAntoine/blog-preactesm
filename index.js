@@ -1,5 +1,4 @@
-import styled, {createGlobalStyle, html, render, useEffect, useState} from "./lib.mjs"
-import { Link, Route } from "https://esm.sh/wouter-preact?alias=react:preact/compat&deps=preact@10.5.14&bundle&min";
+import styled, { createGlobalStyle, html, render, useEffect, useState, RouteImport } from "./lib.mjs"
 
 import { Menu } from "./menu.mjs";
 
@@ -17,26 +16,8 @@ const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Geologica:wght@400;900&family=Moirai+One&family=Nunito:ital,wght@0,200;0,700;0,900;1,900&family=Sen:wght@400;700;800&family=Zilla+Slab&display=swap');
 `
 
-function PageImport({src}) {
-    const [pageComp, setPageComp] = useState("loading")
-    useEffect(() => {
-        (async() =>{
-            const page = await import(src)
-            page.default ? setPageComp(page.default) : setPageComp(Object.values(page)[0])
-        } )()
-    }, [])
-    return pageComp;
-}
 
-function RouteImport({path, src}) {
-    return html`
-        <${Route} path=${path}>
-            ${props => html`<${PageImport} src=${src} ...${props} />`}
-        <//>
-    `
-}
-
-function App() {
+export function App() {
     return html`
         <${StyledBody}>
             <${GlobalStyle} />
@@ -46,4 +27,6 @@ function App() {
      `;
 }
 
-render(html`<${App} />`, document.getElementById("app"))
+if (!("Deno" in window)) {
+    render(html`<${App} />`, document.getElementById("app"))
+}
